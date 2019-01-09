@@ -9,18 +9,18 @@ $('document').ready(function () {
         }
     }
 
-    let q1Choices = ['a', 'b', 'c', 'd'];
-    let q2Choices = ['a', 'b'];
-    let q3Choices = ['a', 'b', 'c'];
-    let q4Choices = ['a', 'b', 'c', 'd'];
-    let q5Choices = ['a', 'b', 'c'];
+    let q1Choices = ['Seven Nation Army', 'Apple Blossom', 'I Fought Piranhas', 'Hotel Yorba'];
+    let q2Choices = ['Nashville', 'Detroit'];
+    let q3Choices = ['arsen', ' aggravated assault', 'resisting arrest'];
+    let q4Choices = ['The White Stripes', 'The Raconteurs', 'The Upholsterers', 'The Dead Weather'];
+    let q5Choices = ['Boarding House Reach', 'Blunderbuss', 'Lazaretto'];
 
 
-    let q1 = new Question(1, 'some text?', q1Choices, q1Choices[2]);
-    let q2 = new Question(2, 'some text?', q2Choices, q2Choices[0]);
-    let q3 = new Question(3, 'some text?', q3Choices, q3Choices[1]);
-    let q4 = new Question(4, 'some text?', q4Choices, q4Choices[3]);
-    let q5 = new Question(5, 'some text?', q5Choices, q5Choices[0]);
+    let q1 = new Question(1, 'Which White Stripes song appears on their self-titled debut?', q1Choices, q1Choices[2]);
+    let q2 = new Question(2, 'Where is Third Man Records located?', q2Choices, q2Choices[0]);
+    let q3 = new Question(3, 'Which crime was Jack White charged for in 2003?', q3Choices, q3Choices[1]);
+    let q4 = new Question(4, 'Which band includes Alison Mosshart?', q4Choices, q4Choices[3]);
+    let q5 = new Question(5, "What is the name of Jack White's third solo album?", q5Choices, q5Choices[0]);
 
 
     let questions = [q1, q2, q3,q4,q5]
@@ -76,9 +76,6 @@ $('document').ready(function () {
         startTimer();
     }
 
-    //  The startTimer function sets an interval that runs the countdown function once a second.
-    //  *****BUG FIX******** 
-    //  Clearing the interval prior to setting our new interval will not allow multiple instances.
     function startTimer() {
         clearInterval(interval);
         interval = setInterval(countdown, 1000);
@@ -116,20 +113,17 @@ $('document').ready(function () {
         let newDivAnswers = $("<form>");
         let newDivCorrect = $("<span>");
 
-        newDivNumber.attr("class", "question");
-        newDivNumber.attr("id", "question-" + question.number);
+        newDivNumber.attr("class", "question number");
         newDivNumber.attr("number", question.number);
         newDivNumber.append("Question " + question.number + ": ");
         newDiv.append(newDivNumber);
 
-        newDivQuestion.attr("class", "question");
-        newDivQuestion.attr("id", "question-string");
+        newDivQuestion.attr("class", "question string");
         newDivQuestion.attr("string", question.string);
         newDivQuestion.append(question.string);
         newDiv.append(newDivQuestion);
 
         newDivAnswers.attr("class", "answers");
-        newDivAnswers.attr("id", "answers-" + question.number);
         newDivAnswers.attr("answer-choices", question.answerChoices);
 
 
@@ -141,7 +135,7 @@ $('document').ready(function () {
             newAnswer.attr("class", "radio");
             newAnswer.attr("id", "radio-" + question.number);
             newAnswer.attr("value", question.answerChoices[i]);
-            // newAnswer.attr("answer-choice", question.answerChoices[i]);
+
             newLabel.text(question.answerChoices[i]);
             newLabel.prepend(newAnswer);
             newDivAnswers.append(newLabel);
@@ -153,7 +147,7 @@ $('document').ready(function () {
         newDiv.append(newDivCorrect);
 
         newDiv.attr("class", "question");
-        newDiv.append("<br />");
+        newDiv.append("<br /> <br />");
         div.append(newDiv);
     }
 
