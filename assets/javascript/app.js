@@ -19,6 +19,7 @@ $('document').ready(function () {
 
     let correct = 0;
     let incorrect = 0;
+    let unanswered = 0;
 
     addQuestions(questions, $("#questions"));
 
@@ -85,16 +86,19 @@ $('document').ready(function () {
         for (let i = 0; i < questions.length; i++) {
             let selected = $((".radio-" + questions[i].number) + ":checked").val();
             let correctChoice = $("#correct-" + questions[i].number).attr("value");
-            console.log(selected, correctChoice)
             if (selected === correctChoice) {
                 correct +=1;
+            }
+            else if (typeof(selected) === 'undefined') {
+                unanswered +=1;
             }
             else {
                 incorrect +=1;
             }    
         }
         $("#results").append("Correct: "+ correct + "<br />");
-        $("#results").append("Incorrect: " + incorrect);
+        $("#results").append("Incorrect: " + incorrect + "<br />");
+        $("#results").append("Unanswered: " + unanswered);
     })
 
 
